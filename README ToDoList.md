@@ -1,13 +1,13 @@
 -> catalogue active quand delta
 
--> sous totaux par catégories ? (voir Adel ?)
+-> sous totaux par catégories
 
 -> pages show : ajouter les possesseurs ?
 
 -> page aide ?
 
--> debug mailer avec Adel ?
+-> debug mailer ?
 
--> regrouper les requêtes (avec Adel)
+-> regrouper les requêtes
 
 -> repenser page collection
