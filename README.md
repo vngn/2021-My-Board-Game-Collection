@@ -1,24 +1,47 @@
 # My Board Game Collection
 
-**Objectif**
+Les possibilités offertes par ce site :
+Ce site vous permet de créer virtuellement votre propre collection de jeux de plateau
 
-Réalisation d’un site de gestion de collections de jeux de plateaux. Le site permettra la consultation de nombreux jeux, que l’on pourra paramétrer selon ses choix et intégrer dans sa collection (si connecté). Après s’être enregistré et s’être connecté, l’utilisateur aura accès à différentes pages : 
-- Une page bibliothèque présentera virtuellement sa collection
-- Une page profil lui permettra d’actualiser son profil et de récupérer des informations liées à sa collection (nombre de jeux, valeur totale, historique des achats…)
+A partir d'un catalogue général :
+- consultez une liste globale ou bien chaque jeu en détail
+- générez la fiche d'information d'un jeu au format PDF
+- personnalisez votre sélection en utilisant l'outil de recherche avancée et les options de tri (par nom, catégorie...)
+
+Créez un compte Utilisateur et accédez :
+- au type de catalogue : affichage de tous les jeux ou seulement de ceux que vous ne possédez pas dans votre collection
+- à votre page profil et la valorisation de votre collection
+
+Passez Administrateur et alimentez le catalogue général :
+- ajouter de nouveaux jeux
+- complétez ou modifier leurs informations
+- supprimez les éléments non désirés
+
+Contactez moi pour toutes questions, demandes ou suggestions via la page 'contact'
+
+**Les origines du projet**
+
+Ce site est développé avec Symfony 5 dans le cadre d'un exercice de fin de formation.
+
+Période de travail sur ce projet : du 26 juillet au 11 août 2021.
+
+Le thème de ce site est la gestion de collections de jeux.
+
+Un catalogue général est disponible à tous. Il permet une personnalisation des champs d'affichage ainsi qu'un détail de chaque jeu sur une page spécifique (imprimable en PDF). Vous pouvez vous inscrire, et ainsi accéder à un espace personnel (une page profil et une collection individuelle) :
+
+- la page profil permettra la gestion des informations suivantes : ajout/modification prenom, nom, pseudo, mot de passe, voir la suppression du profil
+- la page collection affichera ses propres jeux ainsi que des options de gestion (ajout/modification, suppression) et d'analyse (valeur totale, par nom, editeur, annee...)
 
 L’administrateur du site aura bien entendu accès à des actions de gestion, du contenu et des utilisateurs.
 
 **Exigences du projet**
-- Le site aura une connexion avec une base de données
-- Un système d’authentification sera implémenté
-- Un système de rôles sera utilisé : Admin et User
-- Le site sera mis en ligne
-- Une page de contact intègrera la gestion d’envoi d’email
-- Le code sera commenté quand nécessaire
-- Bootstrap et jQuery seront utilisés
-- Le projet sera déposé sur GitHub dès son démarrage
-
-- Factures, bibliothèque et autres éléments pourront être générés en PDF
-- Valorisation du site en front-end
-
-- Système de paiement Stripe
+- connexion avec une base de données
+- système d’authentification
+- système de rôles : Admin et User
+- site mis en ligne
+- age de contact avec gestion d’envoi d’email
+- code commenté quand nécessaire
+- Bootstrap et jQuery utilisés
+- projet déposé sur GitHub dès son démarrage
+- possibilité de génération en PDF d'une fiche produit
+- valorisation du site en front-end
