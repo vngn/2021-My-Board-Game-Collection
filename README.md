@@ -35,7 +35,7 @@ Un catalogue général est disponible à tous. Il permet une personnalisation de
 
 L’administrateur du site aura bien entendu accès à des actions de gestion, du contenu et des utilisateurs.
 
-**Exigences du projet**
+**Les exigences du projet**
 
 - connexion avec une base de données
 - système d’authentification
@@ -48,7 +48,7 @@ L’administrateur du site aura bien entendu accès à des actions de gestion, d
 - possibilité de génération en PDF d'une fiche produit
 - valorisation du site en front-end
 
-**Technos et outils utilisés**
+**Les technos et outils utilisés**
 
 - HTML
 - CSS
