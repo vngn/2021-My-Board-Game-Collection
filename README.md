@@ -1,7 +1,8 @@
 # My Board Game Collection
 
-Les possibilités offertes par ce site :
-Ce site vous permet de créer virtuellement votre propre collection de jeux de plateau
+**Les possibilités offertes par ce site**
+
+Ce site vous permet de créer virtuellement votre propre collection de jeux de plateau.
 
 A partir d'un catalogue général :
 - consultez une liste globale ou bien chaque jeu en détail
@@ -17,11 +18,11 @@ Passez Administrateur et alimentez le catalogue général :
 - complétez ou modifier leurs informations
 - supprimez les éléments non désirés
 
-Contactez moi pour toutes questions, demandes ou suggestions via la page 'contact'
+Contactez moi pour toutes questions, demandes ou suggestions via la page 'contact'.
 
 **Les origines du projet**
 
-Ce site est développé avec Symfony 5 dans le cadre d'un exercice de fin de formation.
+Ce site est développé avec Symfony 5.3 dans le cadre d'un exercice de fin de formation.
 
 Période de travail sur ce projet : du 26 juillet au 11 août 2021.
 
@@ -35,6 +36,7 @@ Un catalogue général est disponible à tous. Il permet une personnalisation de
 L’administrateur du site aura bien entendu accès à des actions de gestion, du contenu et des utilisateurs.
 
 **Exigences du projet**
+
 - connexion avec une base de données
 - système d’authentification
 - système de rôles : Admin et User
@@ -45,3 +47,25 @@ L’administrateur du site aura bien entendu accès à des actions de gestion, d
 - projet déposé sur GitHub dès son démarrage
 - possibilité de génération en PDF d'une fiche produit
 - valorisation du site en front-end
+
+**Technos et outils utilisés**
+
+- HTML
+- CSS
+- SASS
+- Bootstrap
+- JavaScript
+- jQuery
+- PHP
+- Symfony
+
+- VSCode
+- GitHub
+- GitDesktop
+- DBDiagram.io
+- Wamp (Apache, PhpMyadmin, PHP)
+- Mailtrap
+- Postman
+- Hébergeur O2switch
+- Cpanel
+- WinSCP
