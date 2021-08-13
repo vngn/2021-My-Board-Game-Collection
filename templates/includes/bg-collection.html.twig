@@ -1,0 +1,5 @@
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <body class="bg00" style="background-image: url('{{asset('images/3-min.PNG')}}')">  
+{% else %}      
+    <body class="bg00" style="background-image: url('{{asset('images/0.jpg')}}')">
+{% endif %}

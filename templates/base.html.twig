@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="responsive menu, retina-ready, icon font, media queries, css3, transition, mobile" />
+    <meta name="description"
+        content="Site de gestion de collections de jeux de plateau. Créez et gérez votre propre collection virtuelle à partir d'un catalogue général" />
+
+    <title>
+        {% block titre %}
+        MBGC
+        {% endblock titre %}
+    </title>
+
+    {% block stylesheets %}{% endblock stylesheets %}
+
+    {% block javascripts %}{% endblock javascripts %}
+
+    {# BOOTSTRAP 5 #}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    {# FONT AWESOME #}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    {# CSS #}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+
+{% block bg %}{% endblock bg %}
+
+{# on recupere le nom de la route de la page #}
+{% set lien= app.request.get('_route') %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container px-3">
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a class="navbar-brand" href="{{ path('home') }}">My Board Game Collection</a>
+        <a class="navbar-brand" href="{{ path('home') }}"><span class="utilisateur">[{{app.user.pseudo}}]</span></a>
+        {% else %}
+        <li class="nav-item">
+            <a class="navbar-brand" href="{{ path('home') }}">My Board Game Collection</a>
+            <a class="navbar-brand" href="{{ path('app_register') }}"><span class="visiteur">[Inscription
+                    ici]</span></a>
+        </li>
+        {% endif %}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link
+                        {% if 'home' in lien %} active {% endif %}" href="{{ path('home') }}">Accueil</a>
+                </li>
+                <li class="nav-item"><a class="nav-link
+                        {% if 'catalogue' in lien %} active {% endif %}" href="{{ path('catalogue') }}">Catalogue</a>
+                </li>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li class="nav-item"><a class="nav-link
+                        {% if 'collection' in lien %} active {% endif %}"
+                        href="{{ path('collection') }}">Collection</a>
+                </li>
+                <li class="nav-item"><a class="nav-link
+                        {% if 'profil' in lien %} active {% endif %}" href="{{ path('profil') }}">Profil</a>
+                </li>
+                {% endif %}
+                <li class="nav-item"><a class="nav-link
+                        {% if 'contact' in lien %} active {% endif %}" href="{{ path('contact') }}">Contact</a>
+                </li>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li class="nav-item ">
+                    <button class="btn btn-outline-light" onclick="confirmer()">Déconnexion</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="btn btn-outline-light" href="{{ path('app_login' )}}">Connexion</a>
+                </li> #}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="container-fluid my-5">
+    {% block body %}
+    {% endblock body %}
+</section>
+
+<footer class="py-5 bg-dark">
+    <div class="container px-4 px-lg-5">
+        <div>
+            <a href="https://vincent-nguyen.developpeur-de-site-web.fr/" target="_blank">
+                <span>Site réalisé par Vincent NGUYEN</span></a>
+        </div>
+        <div>
+            Copyright &copy; 2021
+        </div>
+        <div>
+            <a href="{{ path('legalNotice') }}">
+                <span>Mentions légales et politique de confidentialité</span>
+            </a>
+        </div>
+        {# COMPTEUR DE VUES JS #}
+        <div>
+            <p>Pages consultées sur ce site : <script type="text/javascript" src="//compteur.websiteout.com/js/7/0/0/0">
+                </script>
+            </p>
+        </div>
+    </div>
+</footer>
+
+{# BOOTSTRAP 5 JS #}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+
+{# SEARCHBAR JS + persistance pour lien avec requêtes SQL #}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#myInput").val(localStorage.getItem('search'));
+        sortTable($("#myInput"));
+        $("#myInput").on("keyup", function () {
+            sortTable(this);
+        });
+    });
+
+    function sortTable(that) {
+        var value = $(that).val().toLowerCase();
+        localStorage.setItem('search', value)
+        $("#myTable tr").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    }
+</script>
+
+{# FUNCTION POUR CONFIRMATION DE DECONNEXION JS #}
+<script>
+    function confirmer() {
+        var deconnexion = confirm("Êtes-vous sûr de vouloir vous déconnecter ?");
+        if (deconnexion) {
+            window.location = "/logout";
+            console.log("ok");
+        }
+    }
+</script>
+
+
+{# OPTION POUR AFFICHAGE EN CLAIR DU MOT DE PASSE JS #}
+<script>
+    // Switch actions
+    $('.unmask').on('click', function () {
+        if ($(this).prev('input').attr('type') == 'password')
+            changeType($(this).prev('input'), 'text');
+        else
+            changeType($(this).prev('input'), 'password');
+        return false;
+    });
+
+    // function from : https://gist.github.com/3559343 Thank you bminer!
+    function changeType(x, type) {
+        if (x.prop('type') == type)
+            return x; //That was easy.
+        try {
+            return x.prop('type', type); //Stupid IE security will not allow this
+        } catch (e) {
+            //Try re-creating the element (yep... this sucks)
+            //jQuery has no html() method for the element, so we have to put into a div first
+            var html = $("<div>").append(x.clone()).html();
+            var regex = /type=(\")?([^\"\s]+)(\")?/; //matches type=text or type="text"
+            //If no match, we add the type attribute to the end; otherwise, we replace
+            var tmp = $(html.match(regex) == null ?
+                html.replace(">", ' type="' + type + '">') :
+                html.replace(regex, 'type="' + type + '"'));
+            //Copy data from old element
+            tmp.data('type', x.data('type'));
+            var events = x.data('events');
+            var cb = function (events) {
+                return function () {
+                    //Bind all prior events
+                    for (i in events) {
+                        var y = events[i];
+                        for (j in y)
+                            tmp.bind(i, y[j].handler);
+                    }
+                }
+            }(events);
+            x.replaceWith(tmp);
+            setTimeout(cb, 10); //Wait a bit to call function
+            return tmp;
+        }
+    }
+</script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<body style="text-align:center;">
+    <h1>{{jeu.nom}}</h1>
+
+    <div>
+        {% if jeu.image %}
+        <img src="{{ jeu.image }}" height="300" style="text-align:center;">
+        {% else %}
+        <p>Pas d'image...</p>
+        {% endif %}
+    </div>
+    <br>
+    <div>
+        <p><b>Editeur :</b> {{jeu.editeur}}</p>
+        <p><b>Catégorie :</b> {{jeu.categorie.categorie}}</p>
+        <p><b>Description :</b></p>
+        <p>{{jeu.description}}</p>
+    </div>
+    <div>
+        <p><b>Langue :</b> {{jeu.langue}}</p>
+        <p><b>Date de sortie :</b> {{jeu.sortie}}</p>
+        <p><b>Prix :</b> {{jeu.prix}} $</p>
+    </div>
+</body>

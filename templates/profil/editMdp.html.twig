@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ parent() }} | Profil
+{% endblock title %}
+
+{% block bg %}
+{{ include('includes/bg-profil.html.twig') }}
+{% endblock bg %}
+
+{% block body %}
+
+{% for message in app.flashes('verify_email_error') %}
+<div class="p-3 my-2 rounded-2 alert alert-danger">{{ message }}</div>
+{% endfor %}
+
+<section class="page-form page-first">
+    <a href="{{ path('profil')}}" class="btn btn-close" title="Revenir à la page profil"></a>
+    <div class="row">
+        <h1>Modification du mot de passe</h1>
+
+        <div class="col-12">
+            {{ form_start(editMdp) }}
+            <div class="row mt-5">
+                <div class="col-12">
+                    {{ form_widget(editMdp) }}
+                </div>
+
+                <div class="col-1">
+                    <button type="submit" class="btn btn-success">
+                        Valider
+                    </button>
+                </div>
+            </div>
+            {{ form_end(editMdp) }}
+        </div>
+    </div>
+</section>
+
+{% endblock body %}

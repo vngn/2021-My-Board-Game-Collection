@@ -1,0 +1,360 @@
+@charset "UTF-8";
+/* DOCUMENT INFORMATION
+    - Document: My Board Game Collection
+    - Version : 1.0.1 du 26/07/2021
+    - Auteur: Vincent NGUYEN
+
+/* COLORS
+    - default body text     black
+    - h1                    black
+    - h2                    black
+    - h3                    black
+    - h4                    black   
+
+/* FONTS
+    - Default:              ''
+
+/* CSS DIRECTORY
+    0. GLOBAL
+    1. LA STRUCTURE DES PAGES
+    1. LES TABLEAUX
+    2. LES FORMULAIRES
+    1. PAGE D'ACCUEIL
+    3. PAGE MENTIONS LEGALES
+    7. PAGE PROFIL ET ELEMENTS LIES
+    X. FOOTER
+
+/* ============================== 0. GLOBAL ============================== */
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background: url(uploads/0.jpg);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+nav {
+  border-bottom: 1px solid white;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.6em;
+}
+
+h3 {
+  font-size: 1.1em;
+}
+
+h5 {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* ============================== 0. LA STRUCTURE DES PAGES ============================== */
+/* Structure de base des pages */
+.page-header {
+  margin: auto;
+  margin-top: 150px;
+  background-color: white;
+  text-align: center;
+  max-width: 800px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 20px white;
+          box-shadow: 0 0 20px white;
+  padding: 20px;
+}
+
+.page-section {
+  margin: auto;
+  margin-top: 50px;
+  background-color: white;
+  text-align: center;
+  max-width: 800px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 20px white;
+          box-shadow: 0 0 20px white;
+  padding: 20px;
+}
+
+/* Background et effets dédiés aux pages */
+.bg00 {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+  background-attachment: fixed;
+}
+
+/* ============================== 0. OPTION POUR AFFICHAGE EN CLAIR DU MOT DE PASSE ============================== */
+form p {
+  position: relative;
+}
+
+.password + .unmask {
+  position: absolute;
+  right: 7px;
+  top: 30px;
+  text-indent: -9999px;
+  width: 25px;
+  height: 25px;
+  background: #aaa;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  -webkit-appearance: none;
+}
+
+.password + .unmask:before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 17px;
+  height: 17px;
+  background: #e3e3e3;
+  z-index: 1;
+  border-radius: 50%;
+}
+
+.password[type="text"] + .unmask:after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 13px;
+  height: 13px;
+  background: #aaa;
+  z-index: 2;
+  border-radius: 50%;
+}
+
+/* ============================== 1. PAGE D'ACCUEIL ============================== */
+/* ============================== 1. LES TABLEAUX ============================== */
+/* Structure de base des tableaux */
+th,
+td {
+  text-align: center;
+}
+
+.page-tableau {
+  background-color: white;
+  text-align: center;
+  margin: 50px auto;
+  padding: 20px 5px 5px;
+  max-width: 1350px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 20px white;
+          box-shadow: 0 0 20px white;
+}
+
+/* Champs des tableaux */
+@media (max-width: 1200px) {
+  .champs-editeur {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .champs-categorie {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .champs-description {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .champs-langue {
+    display: none;
+  }
+}
+
+@media (max-width: 770px) {
+  .champs-sortie {
+    display: none;
+  }
+}
+
+@media (max-width: 770px) {
+  .champs-prix {
+    display: none;
+  }
+}
+
+@media (max-width: 1022px) {
+  .champs-actions {
+    display: none;
+  }
+}
+
+/* Les boutons... */
+.btn-ajouter {
+  margin-right: 12px;
+}
+
+.btn-catalogue-delta {
+  margin-bottom: 20px;
+}
+
+.index-btn-actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.btn-index {
+  margin: auto 8px;
+}
+
+@media (max-width: 1120px) {
+  .btn-index {
+    margin: auto 6px;
+  }
+}
+
+.show-image {
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .show-image {
+    text-align: center;
+  }
+}
+
+.show-infos {
+  text-align: left;
+}
+
+.show-btn-actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.btn-show {
+  margin: -8px 12px 16px;
+}
+
+.btn-show-delete {
+  margin: -8px 12px 0;
+}
+
+.btn-close {
+  float: right;
+}
+
+.btn-login {
+  margin-right: 12px;
+}
+
+/* ============================== 2. LES FORMULAIRES ============================== */
+/* Structure de base des formulaires */
+.page-form {
+  background-color: white;
+  text-align: justify;
+  margin: 50px auto;
+  padding: 20px;
+  max-width: 800px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 20px white;
+          box-shadow: 0 0 20px white;
+}
+
+/* ============================== 6. PAGE MENTIONS LEGALES ============================== */
+/* Structure de base de la page */
+.page-mentions-legales {
+  background-color: white;
+  text-align: justify;
+  margin: 50px auto;
+  padding: 20px;
+  max-width: 800px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 20px white;
+          box-shadow: 0 0 20px white;
+}
+
+/* ============================== X. PARAMETRES DE PAGES SPECIAUX ============================== */
+/* margin-top quand 1er bloc de la page */
+.page-first {
+  margin: 150px auto 100px;
+}
+
+/* margin-bottom quand dernier bloc de la page */
+.page-last {
+  margin-bottom: 100px;
+}
+
+/* ============================== 7. PAGE PROFIL ET ELEMENTS LIES ============================== */
+/* couleurs du statut connecté/non connecté dans la barre de navigation */
+.visiteur {
+  color: red;
+}
+
+.utilisateur {
+  color: green;
+}
+
+.btn-profil {
+  margin: auto 12px;
+}
+
+.profil-date-jeu {
+  font-size: 0.65em;
+  color: grey;
+  vertical-align: text-top;
+}
+
+/* valorisation de la collection */
+.valeur-collection {
+  margin: auto 20px;
+  height: 230px;
+}
+
+.montant-collection {
+  margin: 0;
+  color: white;
+  text-shadow: 0 0 4px black;
+  font-size: 9em;
+}
+
+@media (max-width: 768px) {
+  .montant-collection {
+    font-size: 6em;
+    padding-top: 36px;
+  }
+}
+
+@media (max-width: 568px) {
+  .montant-collection {
+    font-size: 4em;
+    padding-top: 63px;
+  }
+}
+
+/* ============================== X. FOOTER ============================== */
+footer {
+  text-align: center;
+  color: white;
+  margin-top: auto;
+  border-top: 1px solid white;
+}
+/*# sourceMappingURL=style.css.map */

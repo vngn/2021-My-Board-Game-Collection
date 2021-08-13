@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %}
+{{ parent() }} | Accueil
+{% endblock titre %}
+
+{% block bg %}
+{{ include('includes/bg-accueil.html.twig') }}
+{% endblock bg %}
+
+{% block body %}
+
+<section class="page-header">
+    <h1>Bienvenue sur</h1>
+    <h1>My Board Game Collection</h1>
+</section>
+
+<section class="page-section">
+    <h2>Les possibilités offertes par ce site :</h3>
+        <p>Ce site vous permet de créer virtuellement votre propre collection de jeux de plateau.</p>
+        <h5>A partir d'un catalogue général :</h5>
+        <ul>
+            <li>-> consultez une liste globale ou bien chaque jeu en détail</li>
+            <li>-> générez la fiche d'information d'un jeu au format PDF</li>
+            <li>-> personnalisez votre sélection en utilisant l'outil de recherche avancée et les options de tri (par
+                nom,
+                catégorie...)</li>
+        </ul>
+        <h5>Créez un compte Utilisateur et accédez :</h5>
+        <ul>
+            <li>-> au type de catalogue : affichage de tous les jeux ou seulement de ceux que vous ne possédez
+                pas
+                dans votre collection</li>
+            <li>-> à votre page profil et la valorisation de votre collection</li>
+        </ul>
+        <h5>Passez Administrateur et alimentez le catalogue général :</h5>
+        <ul>
+            <li>-> ajouter de nouveaux jeux</li>
+            <li>-> complétez ou modifier leurs informations</li>
+            <li>-> supprimez les éléments non désirés</li>
+            <li></li>
+        </ul>
+
+        <p>Contactez moi pour toutes questions, demandes ou suggestions via la page 'contact' :</p>
+</section>
+
+<section class="page-section">
+    <h2>Les origines du projet :</h3>
+        <p>Ce site est développé avec Symfony 5 dans le cadre d'un exercice de fin de formation.</p>
+        <p>Période de travail sur ce projet : du 26 juillet au 11 août 2021. </p>
+        <p>Le thème de ce site est la gestion de collections de jeux. </p>
+        <p>Un catalogue général est disponible à tous. Il permet une personnalisation des champs
+            d'affichage ainsi qu'un détail de chaque jeu sur une page spécifique (imprimable en PDF).
+            Vous pouvez vous inscrire, et ainsi accéder à un espace personnel (une page profil et une collection
+            individuelle) :</p>
+        <ul>
+            <li>-> la page profil permettra la gestion des informations suivantes : ajout/modification prenom, nom,
+                pseudo, mot de passe, voir la suppression du profil</li>
+            <li>-> la page collection affichera ses propres jeux ainsi que des options de gestion
+                (ajout/modification, suppression) et d'analyse (valeur totale, par nom, editeur, annee...)</li>
+        </ul>
+        <p>L’administrateur du site aura bien entendu accès à des actions de gestion, du contenu et des
+            utilisateurs.
+        </p>
+</section>
+
+<section class="page-section page-last">
+    <h2>Les exigences techniques du projet :</h3>
+        <ul>
+            <li>connexion avec une base de données</li>
+            <li>système d’authentification</li>
+            <li>système de rôles : Admin et User</li>
+            <li>site mis en ligne</li>
+            <li>page de contact avec gestion d’envoi d’email</li>
+            <li>code commenté quand nécessaire</li>
+            <li>Bootstrap et jQuery utilisés</li>
+            <li>projet déposé sur GitHub dès son démarrage</li>
+            <li>possibilité de génération en PDF d'une fiche produit</li>
+            <li>valorisation du site en front-end</li>
+        </ul>
+</section>
+
+{% endblock body %}

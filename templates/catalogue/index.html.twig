@@ -1,0 +1,130 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %}
+{{ parent() }} | Catalogue
+{% endblock titre %}
+
+{% block bg %}
+{{ include('includes/bg-catalogue.html.twig') }}
+{% endblock bg %}
+
+{% block body %}
+
+{% for label, messages in app.flashes %}
+{% for message in messages %}
+<div class="alert alert-{{ label }} mt-3" role="alert">
+    {{ message }}
+</div>
+{% endfor %}
+{% endfor %}
+
+<section class="page-tableau page-first">
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <div class="btn-catalogue-delta">
+        <a href="{{ path('delta') }}" class="btn btn-warning"
+            title="Voir uniquement les jeux absents de votre collection"><i class="fas fa-arrow-circle-right"></i> Voir les jeux
+            hors collection</a>
+    </div>
+    {% endif %}
+
+    <div class="row justify-content-between">
+        {% if is_granted('ROLE_ADMIN') %}
+        <div class="show-image col-md-6">
+            <div class="input-group rounded mb-3">
+                <input type="text" id="myInput" class="form-control" placeholder="Recherche ciblée ici..."
+                    aria-label="Search" aria-describedby="search-addon" />
+                <span class="input-group-text border-0" id="search-addon">
+                    <i class="fas fa-search"></i>
+                </span>
+            </div>
+        </div>
+        <div class="show-image col-2">
+            <a href="{{ path('add') }}" class="btn btn-ajouter btn-primary">Ajouter</a>
+        </div>
+        {% else %}
+        <div class="show-image col-12">
+            <div class="input-group rounded">
+                <input type="text" id="myInput" class="form-control" placeholder="Recherche ciblée ici..."
+                    aria-label="Search" aria-describedby="search-addon" />
+                <span class="input-group-text border-0" id="search-addon">
+                    <i class="fas fa-search"></i>
+                </span>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <table class="table table-hover mb-5">
+        <thead>
+            <tr>
+                <th class="champs-nom"><a href="{{ path('catalogue_nom') }}" class="btn btn-warning"
+                        title="Trier par nom">Nom</a></th>
+                <th class="champs-image">Image</th>
+                <th class="champs-editeur"><a href="{{ path('catalogue_editeur') }}" class="btn btn-warning"
+                        title="Trier par éditeur">Editeur</a>
+                </th>
+                <th class="champs-categorie"><a href="{{ path('catalogue_categorie') }}" class="btn btn-warning"
+                        title="Trier par catégorie">Catégorie</a></th>
+                <th class="champs-description">Description</th>
+                <th class="champs-langue"><a href="{{ path('catalogue_langue') }}" class="btn btn-warning"
+                        title="Trier par langue du jeu">Langue</a>
+                </th>
+                <th class="champs-sortie"><a href="{{ path('catalogue_sortie') }}" class="btn btn-warning"
+                        title="Trier par date de sortie">Sortie</a>
+                </th>
+                <th class="champs-prix"><a href="{{ path('catalogue_prix') }}" class="btn btn-warning"
+                        title="Trier par prix">Prix</a></th>
+                <th class="champs-actions">Actions</th>
+            </tr>
+        </thead>
+
+        <tbody id="myTable">
+            {% for j in jeu %}
+            <tr class="align-middle">
+                <td class="champs-nom" title="Voir plus d'informations">
+                    <a href="{{ path('show', {'id': j.id}) }}" class="btn">
+                        {{ j.nom }}
+                    </a>
+                </td>
+                {% if j.image %}
+                <td class="champs-image" title="Voir plus d'informations">
+                    <a href="{{ path('show', {'id': j.id}) }}" class="btn">
+                        <img src="{{ asset('uploads/'~j.image~'') }}" width="100">
+                    </a>
+                </td>
+                {% else %}
+                <td class="champs-image"></td>
+                {% endif %}
+                <td class="champs-editeur">{{ j.editeur }}</td>
+                <td class="champs-categorie">{{ j.categorie.categorie }}</td>
+                <td class="champs-description">{{ j.description | u.truncate(90,'...') }}</td>
+                <td class="champs-langue">{{ j.langue }}</td>
+                <td class="champs-sortie">{{ j.sortie }}</td>
+                <td class="champs-prix">{{ j.prix }} $</td>
+                <td class="champs-actions">
+                    <div class="index-btn-actions">
+                        <a href="{{ path('show', {'id': j.id}) }}" class="btn btn-index btn-warning"
+                            title="Voir plus d'informations"><i class="fas fa-info-circle"></i></a>
+                        <a href="{{ path('generate_pdf', {'id': j.id}) }}" class="btn btn-index btn-warning"
+                            title="Fiche du jeu en version PDF"><i class="far fa-file-pdf"></i></a>
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('edit', {'id': j.id}) }}" class="btn btn-index btn-primary"
+                            title="Modifier des informations du jeu">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <form method="post" action="{{ path('delete', {'id': j.id}) }}"
+                            onsubmit="return confirm('Voulez vous supprimer {{ j.nom }} ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ j.id) }}">
+                            <button class="btn btn-index btn-danger" title="Supprimer le jeu du catalogue"><i
+                                    class="fa fa-trash"></i></button>
+                        </form>
+                    </div>
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+
+{% endblock body %}

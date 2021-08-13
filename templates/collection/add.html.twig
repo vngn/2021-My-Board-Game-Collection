@@ -1,0 +1,27 @@
+{# {% extends 'base.html.twig' %}
+
+{% block titre %}
+{{ parent() }} | Collection
+{% endblock titre %}
+
+{% block body %}
+
+<section class="page-form">
+    <h3>Ajouter un jeu :</h3>
+
+    {{ form_start(formJeu) }}
+    <div class="row mt-5">
+        <div class="col-12">
+            {{ form_widget(formJeu) }}
+        </div>
+
+        <div class="col-1">
+            <button type="submit" class="btn btn-success">
+                Ajouter
+            </button>
+        </div>
+    </div>
+    {{ form_end(formJeu) }}
+</section>
+
+{% endblock body %} #}

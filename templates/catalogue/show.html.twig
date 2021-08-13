@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %}
+{{ parent() }} | Catalogue
+{% endblock titre %}
+
+{% block bg %}
+{{ include('includes/bg-catalogue.html.twig') }}
+{% endblock bg %}
+
+{% block body %}
+
+<section class="page-section page-first">
+    <a href="{{ path('catalogue')}}" class="btn btn-close" title="Revenir au catalogue"></a>
+    
+    <h1 class="mb-5">{{jeu.nom}}</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="show-image col-md-5">
+                {% if jeu.image %}
+                <img src="{{ asset('uploads/'~jeu.image~'') }}" width="260">
+                {% else %}
+                <p>Pas d'image...</p>
+                {% endif %}
+                {# <th>Image 2</th>
+            <th>Image 3</th>
+            <th>Image 4</th>
+            <th>Image 5</th> #}
+            </div>
+
+            <div class="show-infos col-md-7">
+                <p><b>Editeur :</b> {{jeu.editeur}}</p>
+                <p><b>Catégorie :</b> {{jeu.categorie.categorie}}</p>
+                <p><b>Description :</b> {{jeu.description}}</p>
+                <p><b>Langue :</b> {{jeu.langue}}</p>
+                <p><b>Date de sortie :</b> {{jeu.sortie}}</p>
+                <p><b>Prix :</b> {{jeu.prix}} $</p>
+                <div class="show-btn-actions mt-5">
+                    <p><b>Actions :</b></p>
+                    <a href="{{ path('generate_pdf', { 'id': jeu.id} )}}" class="btn btn-show btn-warning"
+                        title="Fiche du jeu en version PDF"><i class="far fa-file-pdf"></i></a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('edit', { 'id': jeu.id} )}}" class="btn btn-show btn-primary"
+                        title="Modifier des informations du jeu">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    <form method="post" action="{{ path('delete', {'id': jeu.id}) }}"
+                        onsubmit="return confirm('Voulez vous supprimer {{ jeu.nom }} ?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ jeu.id) }}">
+                        <button class="btn btn-show-delete btn-danger" title="Supprimer le jeu du catalogue"><i
+                                class="fa fa-trash"></i></button>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock body %}

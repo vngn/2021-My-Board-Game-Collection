@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %}
+{{ parent() }} | Profil
+{% endblock titre %}
+
+{% block bg %}
+{{ include('includes/bg-visiteur.html.twig') }}
+{% endblock bg %}
+
+{% block body %}
+
+<section class="page-section page-first">
+    <p>Si votre Email correspond à un compte existant, un Email contenant un lien que vous pouvez utiliser pour
+        réinitialiser votre mot de passe a été envoyé.</p>
+    <p>Ce lien expirera dans 1 heure.</p>
+    <p>Si vous ne recevez pas d'Email, vérifiez vos spams ou <a
+            href="{{ path('app_forgot_password_request') }}">réessayez</a>.</p>
+</section>
+
+{% endblock body %}

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %}
+{{ parent() }} | Delta
+{% endblock titre %}
+
+{% block bg %}
+{{ include('includes/bg-catalogue.html.twig') }}
+{% endblock bg %}
+
+{% block body %}
+
+<section class="page-form page-first">
+    <a href="{{ path('delta')}}" class="btn btn-close" title="Revenir au catalogue"></a>
+
+    <h3>Modifier un jeu :</h3>
+    {{ form_start(formJeu) }}
+    <div class="row mt-5">
+        <div class="col-12">
+            {{ form_widget(formJeu) }}
+        </div>
+
+        <div class="col-1">
+            <button type="submit" class="btn btn-success">
+                Modifier
+            </button>
+        </div>
+    </div>
+    {{ form_end(formJeu) }}
+</section>
+
+{% endblock body %}

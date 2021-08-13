@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %}
+{{ parent() }} | Profil
+{% endblock titre %}
+
+{% block bg %}
+{{ include('includes/bg-profil.html.twig') }}
+{% endblock bg %}
+
+{% block body %}
+
+{% for label, messages in app.flashes %}
+{% for message in messages %}
+<div class="alert alert-{{ label }} mt-3" role="alert">
+    {{ message }}
+</div>
+{% endfor %}
+{% endfor %}
+
+<section class="page-header">
+    <h1>{{app.user.prenom}} {{app.user.nom}}</h1>
+
+    <div>
+        {{ app.user.email }}
+    </div>
+
+    <div>
+        <a href="{{ path('profil_edit')}}" class="btn btn-primary my-3 btn-profil">Modifier le profil</a>
+        <a href="{{ path('mdp_edit')}}" class="btn btn-primary my-3 btn-profil">Modifier le mot de passe</a>
+    </div>
+</section>
+
+<section class="page-section">
+    <h4>Vos boîtes de base :</h4>
+    <ul>
+        {% for j in jeux %}
+        {% if j.categorie.id == 2 %}
+        <li class="align-middle">
+            <td><a href="{{ path('show', {'id': j.id}) }}" class="btn">{{ j.nom }}
+                    <span class="profil-date-jeu">({{ j.sortie }})</span>
+                </a>
+            </td>
+        </li>
+        {% else %}
+        <td></td>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    <div class="mb-3">
+        <h4>Valorisation de vos boîtes de base :</h4>
+    </div>
+
+    <div class="mb-3 valeur-collection" style="background-image: url('{{asset('images/dollar.jpg')}}')">
+        <p class="montant-collection">{{ valeur }} $</p>
+    </div>
+</section>
+
+<section class="page-section">
+    <h4>Vos extensions :</h4>
+    <ul>
+        {% for j in jeux %}
+        {% if j.categorie.id == 3 %}
+        <li class="align-middle">
+            <td><a href="{{ path('show', {'id': j.id}) }}" class="btn">{{ j.nom }}
+                    <span class="profil-date-jeu">({{ j.sortie }})</span>
+                </a>
+            </td>
+        </li>
+        {% else %}
+        <td></td>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    <div class="mb-3">
+        <h4>Valorisation de vos extensions :</h4>
+    </div>
+
+    <div class="mb-3 valeur-collection" style="background-image: url('{{asset('images/dollar.jpg')}}')">
+        <p class="montant-collection">{{ valeur }} $</p>
+    </div>
+</section>
+
+<section class="page-section">
+    <h4>Vos add-ons :</h4>
+    <ul>
+        {% for j in jeux %}
+        {% if j.categorie.id == 4 %}
+        <li class="align-middle">
+            <td><a href="{{ path('show', {'id': j.id}) }}" class="btn">{{ j.nom }}
+                    <span class="profil-date-jeu">({{ j.sortie }})</span>
+                </a>
+            </td>
+        </li>
+        {% else %}
+        <td></td>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    <div class="mb-3">
+        <h4>Valorisation de vos add-ons :</h4>
+    </div>
+
+    <div class="mb-3 valeur-collection" style="background-image: url('{{asset('images/dollar.jpg')}}')">
+        <p class="montant-collection">{{ valeur }} $</p>
+    </div>
+</section>
+
+<section class="page-section">
+    <h4>Autres produits :</h4>
+    <ul>
+        {% for j in jeux %}
+        {% if j.categorie.id == 5 %}
+        <li class="align-middle">
+            <td><a href="{{ path('show', {'id': j.id}) }}" class="btn">{{ j.nom }}
+                    <span class="profil-date-jeu">({{ j.sortie }})</span>
+                </a>
+            </td>
+        </li>
+        {% else %}
+        <td></td>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    <div class="mb-3">
+        <h4>Valorisation de vos autres produits :</h4>
+    </div>
+
+    <div class="mb-3 valeur-collection" style="background-image: url('{{asset('images/dollar.jpg')}}')">
+        <p class="montant-collection">{{ valeur }} $</p>
+    </div>
+</section>
+
+<section class="page-section page-last">
+    <div class="mb-3">
+        <h4>Valorisation de votre collection :</h4>
+    </div>
+
+    <div class="mb-3 valeur-collection" style="background-image: url('{{asset('images/dollar.jpg')}}')">
+        <p class="montant-collection">{{ valeur }} $</p>
+    </div>
+</section>
+
+{% endblock body %}
