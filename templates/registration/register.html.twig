@@ -33,7 +33,7 @@
         <p>Vous pouvez retirer votre consentement à tout moment depuis le <a href="{{ path('contact') }}"><span
                     class="link">formulaire de contact<span></a> ou en nous contactant à l’adresse suivante :
             vngn@laposte.net</p>
-        {{ form_row(registrationForm.agreeTerms) }}
+        {{ form_row(registrationForm.agreeTerms, {label: 'Accepter les conditions'}) }}
 
         <div class="col-1">
             <button type="submit" class="btn btn-primary">
