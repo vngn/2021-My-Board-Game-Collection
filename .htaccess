@@ -1,0 +1,5 @@
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^vincent\-nguyen\.developpeur\-de\-site\-web\.fr$
+RewriteRule ^/?$ "https\:\/\/vincent\-nguyen\.developpeur\-de\-site\-web\.fr\/\^\/\$" [R=301,L]
+
